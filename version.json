@@ -1,5 +1,5 @@
 {
-  "version":"1.1.0",
+  "version":"1.2.0",
   "patchnote" : [
      "Client.Lua Cleaned up.",
      "Blip code Re-Written.",
