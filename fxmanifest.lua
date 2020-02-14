@@ -4,7 +4,7 @@ game 'gta5'
 
 description 'rewards'
 
-version '1.1.0'
+version '1.2.0'
 
 files {
 	'html/index.html',
