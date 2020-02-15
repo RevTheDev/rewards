@@ -13,6 +13,7 @@ Blip code Re-Written.
 Marker code Re-Written.
 Added option to config for both blips and markers for easier configuration.
 Added option to config to change the timer countdown.
+ESX Perms Added so that it can be restricted to a certain group of players Updated 15/2/20
 
 ## Configuration of Script
 To turn off Markers/blips go into config and at the bottom set 
@@ -61,6 +62,8 @@ ENJOY
 5. Add `start rewards` into your server.cfg **Make sure to add this after mysql-async and es_extended**
 6. Start it and you're good to go
 
+In the config make sure to set you ESX Perms it is default set to superadmin
+
 ## Documentation
 Commands:
 - /daily <- opens daily rewards menu
@@ -98,6 +101,8 @@ After replacing it should look like this
 3) Config to easly set time---Done
 4) Rewrite of Client.lua---Done For now
 5) Add multiple locations--- Done
+6) Discord Perms
+7)ESX Perms -----Done
 Much More
 
 Please report any bugs or problems and i will do my best to help, The edits iv made arnt pretty but they work and dont cause any lag it has been test on my server and doesnt cause any time hitching as of yet.
