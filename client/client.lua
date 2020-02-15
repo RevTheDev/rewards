@@ -2,6 +2,14 @@
 --==                                VARIABLES - DO NOT EDIT                                     ==
 --================================================================================================
 local notify = false
+ESX = nil
+
+Citizen.CreateThread(function()
+	while ESX == nil do
+		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+		Citizen.Wait(10)
+	end
+end)
 
 --================================================================================================
 --==   vvvvvvvvvvvvvvvvvvvvvvvvvvv  EVENTS - DO NOT EDIT  vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv     ==
@@ -57,11 +65,11 @@ end
 --===============================================
 
 Citizen.CreateThread(function(source, args, user)
-if Config.rblip_enabled then
+if Config.EveryBody then
 	  while true do
 		  Wait(0)
-		 
-	     if nearREW()then
+		  
+		  if nearREW()then
 			ShowNotification(('Press ~r~E ~w~to check Daily Rewards'))
 			notify = true
 
@@ -144,4 +152,63 @@ function ShowNotification(text)
 	DrawNotification(false, false)
 end
 
-  
+--=====================================================
+--======         ESXPerms Perms                  ======
+--=====================================================
+
+Citizen.CreateThread(function(source, args, user)
+if Config.AcePerms then
+	  while true do
+		  Wait(0)
+		  
+		  if nearREW()then
+			ShowNotification(('Press ~r~E ~w~to check Daily Rewards'))
+			notify = true
+
+		 if IsControlJustPressed(1, 51) then
+		    ESX.TriggerServerCallback('Rewards:Admin_getUsergroup', function(plyGroup)
+			if plyGroup ~= nil and (plyGroup == Config.admin) then
+
+            TriggerEvent("free:toggleFreeMenu", source, true)
+		else
+			 --exports['mythic_notify']:SendAlert('error', "You dont have the Permission to use this!!") -- Disable as not every has mythic notify
+             exports.pNotify:SendNotification({text = "You dont have the Permission to use this!!"})
+			end
+		end)
+	end
+end
+		
+		if IsControlJustPressed(1, 322) then
+		inMenu = false
+			SetNuiFocus(false, false)
+			SendNUIMessage({type = 'close'})
+		end
+	  end
+	end
+  end)
+
+--Ignore this part Below
+--Ignore this part Below
+--=====================================================
+--======         Discord Perms                   ======
+--=====================================================
+
+
+--=====================================================
+--======            Notifications                ======
+--=====================================================
+RegisterNetEvent("free:NoDiscordPerms")
+AddEventHandler("free:NoDiscordPerms", function()
+    --exports['mythic_notify']:SendAlert('error', "Discord must be open") -- Disable as not every has mythic notify
+	ShowNotification(('Discord must be open'))
+	notify = true
+end)
+
+RegisterNetEvent("free:NoDiscordRole")
+AddEventHandler("free:NoDiscordRole", function()
+    --exports['mythic_notify']:SendAlert('error', "You dont have the correct discord role")-- Disable as not every has mythic notify
+	ShowNotification(('You dont have the correct discord role'))
+	notify = true
+end)
+--Ignore this part Above
+--Ignore this part Above
