@@ -1,10 +1,7 @@
 ESX = nil
 local timecache,collecting = {},{}
 
-Citizen.CreateThread(function()
-	TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-    while ESX==nil do Wait(0) end
-end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 Citizen.CreateThread(function()
 	MySQL.ready(function()
@@ -95,7 +92,7 @@ AddEventHandler("free:collect", function(t)
 		if collect[1] then
 			if collect[1].next_collect < now then
 				claimRewards(xPlayer)
-				TriggerClientEvent("esx:showNotification",_source,Config.claimed)
+				TriggerClientEvent("esx:showNotification",_source, Config.claimed)
 				TriggerClientEvent("free:toggleFreeMenu", _source, false)
 				MySQL.Async.execute('UPDATE `daily_free` SET `next_collect`=@nextcollect,`times_collected`=@timescollected WHERE `identifier`=@identifier', {["@identifier"] = identifier, ["@nextcollect"] = nextcollect, ["@timescollected"] = collect[1].times_collected+1}, nil)
 				TriggerClientEvent("free:setTimeout", _source, nextcollect)
@@ -105,7 +102,7 @@ AddEventHandler("free:collect", function(t)
 			end
 		else
 			claimRewards(xPlayer)
-			TriggerClientEvent("esx:showNotification",_source,Config.claimed)
+			TriggerClientEvent("esx:showNotification",_source, Config.claimed)
 			TriggerClientEvent("free:setTimeout", _source, nextcollect)
 			TriggerClientEvent("free:toggleFreeMenu", _source, false)
 			MySQL.Async.execute('INSERT INTO `daily_free` (`identifier`, `next_collect`, `times_collected`) VALUES (@identifier, @nextcollect, 1);', {['@identifier'] = identifier, ['@nextcollect'] = nextcollect}, nil)
@@ -119,3 +116,23 @@ TriggerEvent('es:addCommand', 'daily', function(source, args, user)
 	TriggerClientEvent("free:toggleFreeMenu", source, true)
   end)
 end
+
+--=====================================================
+--======         AcePerms Perms                  ======
+--=====================================================
+ESX.RegisterServerCallback('Rewards:Admin_getUsergroup', function(source, cb)
+	local xPlayer = ESX.GetPlayerFromId(source)
+	local plyGroup = xPlayer.getGroup()
+
+	if plyGroup ~= nil then 
+		cb(plyGroup)
+	else
+		cb('user')
+	end
+end)
+
+--Ignore this part Below
+--Ignore this part Below
+--=====================================================
+--======         Discord Perms                   ======
+--=====================================================
