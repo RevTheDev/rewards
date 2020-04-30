@@ -1,4 +1,4 @@
-{local type = {money=1,item=2,weapon=3} -- no touchey, thank you
+local type = {money=1,item=2,weapon=3} -- no touchey, thank you
 Config = {}
 
 Config.Command = false  -- Change command to true to switch to /daily
