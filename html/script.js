@@ -46,9 +46,9 @@ $(function() {
 
 function toggleshow(show) {
     if (!show) {
-        $("#main").delay(100).animate({ height: 0 }, 700, "swing", function() { $("#main").hide(); });
+        $("#main").delay(1).animate({ height: 0 }, 1, "swing", function() { $("#main").hide(); });
     } else {
         $("#main").show();
-        $("#main").delay(100).animate({ height: 210 }, 700);
+        $("#main").delay(1).animate({ height: 210 }, 700);
     }
 }
