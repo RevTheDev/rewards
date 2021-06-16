@@ -99,10 +99,10 @@ After replacing it should look like this
 1) Vehicle Rewards
 2) Property Rewards
 3) Config to easly set time---Done
-4) Rewrite of Client.lua---Done For now
+4) Rewrite of Client.lua--- Done For now
 5) Add multiple locations--- Done
-6) Discord Perms
-7)ESX Perms -----Done
+6) Discord Perms 
+7)ESX Perms--- Done
 Much More
 
 Please report any bugs or problems and i will do my best to help, The edits iv made arnt pretty but they work and dont cause any lag it has been test on my server and doesnt cause any time hitching as of yet.
