@@ -101,7 +101,7 @@ After replacing it should look like this
 3) Config to easly set time---Done
 4) Rewrite of Client.lua--- Done For now
 5) Add multiple locations--- Done
-6) Discord Perms 
+6) Discord Perms
 7)ESX Perms--- Done
 Much More
 
