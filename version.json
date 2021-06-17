@@ -1,10 +1,8 @@
 {
-  "version":"1.2.0",
+  "version":"1.2.1",
   "patchnote" : [
-     "Client.Lua Cleaned up.",
-     "Blip code Re-Written.",
-     "Marker code Re-Written.", 
-     "Added option to config for both blips and markers for easier configuration.",
-    "Added option to config to change the timer countdown."
+     "Fixed some spelling issuses",
+     "Hopefully fixed spam click issue",
+     "Made it so that you can disable getting weapons"
   ]
 }
