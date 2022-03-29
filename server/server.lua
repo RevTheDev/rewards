@@ -56,7 +56,7 @@ function claimRewards(xPlayer)
  local weighedlist = {}
 	if Config.random_rewards_enabled then
 		for k,v in ipairs(Config.random_rewards) do
-			local chance = v.chance; v.chance = nil
+			local chance = tonumber(v.chance)
 			for i=1,chance do
 				table.insert(weighedlist, v)
 			end
